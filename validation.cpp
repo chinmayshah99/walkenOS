@@ -1,7 +1,10 @@
+#include <iostream>
+#include "validation.h"
+
 int getInt() {
-    while(1) {
-        int k;
-        std::cin >> k;
+    while(true {
+        int input;
+        std::cin >> input;
         std::cin.ignore(32767, '\n');
         if(std::cin.fail()) {
             std::cin.clear();
@@ -9,6 +12,6 @@ int getInt() {
             std::cout << "Input not an integer! Re-enter key: ";
             std::cout << std::endl;
         }
-        else return k;
+        else return input;
     }
 }
