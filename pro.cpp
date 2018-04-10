@@ -53,7 +53,7 @@ using namespace std;
         	case '2':
         	break;
         	case '3':
-        	   system("cls");
+        	   system("clear");
 
         	break;
         	case '4':
