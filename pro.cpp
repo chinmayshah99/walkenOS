@@ -56,7 +56,7 @@ void mainmenu()
             std::cout <<std::string(50,' ') <<"Input not an integer! Re-enter key";
             std::cout << std::endl;
             delay(1000);
-            system("cls");
+            system("clear");
             goto abc;
         }
         else break;
