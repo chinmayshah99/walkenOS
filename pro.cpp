@@ -11,6 +11,7 @@ power off
 */
 
 #include <iostream>
+#include <string>
 #include <cstdlib>
 #include <chrono>
 #include <thread>
@@ -19,12 +20,11 @@ using namespace std;
 
 
 void mainmenu()
- {
+{
      abc:
-     char c;
+     char c; // TODO, NEEDS VISIT as line 42 re-defines 'c'
 
-        cout<<string(10,'\n')<<string(12, '\t')<<"Menu\n\n"<<string(10,'\t')<<"Press the number to enter the program"<<string(4,'\n');
-
+        std::cout<<string(10,'\n')<<string(12, '\t')<<"Menu\n\n"<<string(10,'\t')<<"Press the number to enter the program"<<string(4,'\n');
  		std::cout << std::string(11,'\t');
 
  		cout<<"1.File Manager\n";
@@ -36,23 +36,21 @@ void mainmenu()
  		cout<<"4.Power Off\n";
  	    std::cout << string(2,'\n')<<std::string(11,'\t')<<"Input:";
 
-
-
-
+        
         while(true) {
-        int c;
-        std::cin >>c;
-        std::cin.ignore(32767, '\n');
-        if(std::cin.fail()) {
-            std::cin.clear();
+            int c;
+            std::cin >>c;
             std::cin.ignore(32767, '\n');
-            std::cout << "\n\n" << std::string(10,'\t') <<"Input not an integer! Re-enter key";
-            std::cout << std::endl;
-            std::this_thread::sleep_for (std::chrono::seconds(3));
-            system("clear");
-            goto abc;
-        }
-        else break;
+            if(std::cin.fail()) {
+                std::cin.clear();
+                std::cin.ignore(32767, '\n');
+                std::cout << "\n\n" << std::string(10,'\t') <<"Input not an integer! Re-enter key";
+                std::cout << std::endl;
+                std::this_thread::sleep_for (std::chrono::seconds(3));
+                system("clear");
+                goto abc;
+            }
+            else break;
         }
 
         switch(c)
@@ -70,15 +68,10 @@ void mainmenu()
 
 
         }
-
-
-
-
- }
+}
 
  int main()
  {
-
 
  	mainmenu();
  	return 0;
