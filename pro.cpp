@@ -69,7 +69,7 @@ void mainmenu()
         	case '2':
         	break;
         	case '3':
-        	   system("clr");
+        	   system("clear");
         	break;
         	case '4':
         		return;
