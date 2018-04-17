@@ -1,3 +1,5 @@
+// validates whehter file exists and then deletes it
+
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -42,9 +44,12 @@ void delete_file(string file_name)
 	bool check = if_file_exists(file_name);
 	if(check == true)
 	{
-		// calling 
-		string delete_command = "rm "+ file_name;
-		//system(delete_command);
+		string delete_command = "rm "+ file_name; // linux format
+		//converts the string to char* for system()
+		char * writable = new char[delete_command.size() + 1];
+		std::copy(delete_command.begin(), delete_command.end(), writable);
+		writable[delete_command.size()] = '\0'; // don't forget the terminating 0	
+		system(writable);
 		cout<<" "<<file_name<<" file deleted successfully"<<endl;
 	}
 	else
@@ -67,14 +72,7 @@ int main(int argc, char const *argv[])
 	// delete file 
 	// eror checking and use 
 	// system calls to delete 
-
 	delete_file(file_name_1);
-
-
-	
-
-
-
 
 	return 0;
 }
