@@ -2,15 +2,13 @@
 #include <cstring>
 #include <fstream>
 
-
 using namespace std;
-
-
 
 bool if_file_exists(string file_name)
 {
 	try {
-        ifstream in(file_name);
+        ifstream in;
+        in.open(file_name);
         in.exceptions(std::ifstream::failbit);
         return true;
     } catch (std::ios_base::failure &fail) {
@@ -24,7 +22,7 @@ bool if_file_exists(string file_name)
 
 void open_file(string file_name)
 {
-	bool check = if_file_exists("fcfs");
+	bool check = if_file_exists(file_name);
 	if(check == true)
 	{
 		// proceed with openning of file
@@ -41,18 +39,17 @@ void open_file(string file_name)
 
 void delete_file(string file_name)
 {
-	bool check = if_file_exists("fcfs");
+	bool check = if_file_exists(file_name);
 	if(check == true)
 	{
 		// calling 
-		string delete_command = "rm ";
-		strcat(delete_command,file_name);
-		system(delete_command);
+		string delete_command = "rm "+ file_name;
+		//system(delete_command);
 		cout<<" "<<file_name<<" file deleted successfully"<<endl;
 	}
 	else
 	{
-		cout<"error locating file"<<endl;
+		cout<<"error locating file"<<endl;
 	}
 	return;
 }
@@ -60,23 +57,21 @@ void delete_file(string file_name)
 
 int main(int argc, char const *argv[])
 {
-	/* code */
-
-
 	// fopen check for if file exists and then move 
 	// if not then go back to previous menu 
 
-
-	open_file("fcfs");
-	delete_file("fcfs");
-
-
-
-
+	std::string file_name_1;
+	std::cin>>file_name_1;
+	open_file(file_name_1);
 
 	// delete file 
 	// eror checking and use 
 	// system calls to delete 
+
+	delete_file(file_name_1);
+
+
+	
 
 
 
