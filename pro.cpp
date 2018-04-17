@@ -21,7 +21,7 @@ power off
 void mainmenu()
 {
      abc:
-     char c; // TODO, NEEDS VISIT as line 42 re-defines 'c'
+     	int c; // TODO, NEEDS VISIT as line 42 re-defines 'c'
 
         std::cout<<std::string(10,'\n')<<std::string(12, '\t')<<"Menu\n\n"<<std::string(10,'\t');
         std::cout<<"Press the number to enter the program"<<std::string(4,'\n');
@@ -38,13 +38,12 @@ void mainmenu()
 
         
         while(true) {
-            int c;
             std::cin >>c;
             std::cin.ignore(32767, '\n');
             if(std::cin.fail()) {
                 std::cin.clear();
                 std::cin.ignore(32767, '\n');
-                std::cout << "\n\n" << std::string(10,'\t') <<"Input not an integer! Re-enter key";
+     pqr:       std::cout << "\n\n" << std::string(10,'\t') <<"Input not an integer! Re-enter key";
                 std::cout << std::endl;
                 std::this_thread::sleep_for (std::chrono::seconds(1));
                 system("clear");
@@ -55,15 +54,18 @@ void mainmenu()
 
         switch(c)
         {
-        	case '1':
+        	case 1:
         	break;
-        	case '2':
+        	case 2:
+        		std::cout<<"Hello"<<std::endl;
         	break;
-        	case '3':
+        	case 3:
         	   system("clear");
         	break;
-        	case '4':
-        		return;
+        	case 4:
+        	   system("exit");
+        	break;
+        	default:
         	break;
 
 
