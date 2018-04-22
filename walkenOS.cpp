@@ -1,7 +1,7 @@
-
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <fstream>
 
 void startup();
 
@@ -32,7 +32,7 @@ void startup() {
 	}
     std::this_thread::sleep_for (std::chrono::seconds(2));
     system("clear");
-    system("play -q vista.wav");
+    system("play -q daemon_process/vista.wav");
     std::cout << std::string(100,'\n');
     std::cout << std::string(11,'\t') << "Welcome User!\n"; //full
     //std::cout << std::string(5,'\t') << "Welcome User!\n"; //split

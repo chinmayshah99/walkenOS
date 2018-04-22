@@ -12,7 +12,7 @@ void user()
     cout<<"Enter 1.Set Up New Account, 2.Login"<<endl;
     cin>>ch;
     if(ch==1)
-    {
+    {z
         set:
         string u;
         int j=0;
