@@ -52,7 +52,7 @@ void delete_file(string file_name)
 	}
 	else
 	{
-		cout<"error locating file"<<endl;
+		cout<<"error locating file"<<endl;
 	}
 	return;
 }
