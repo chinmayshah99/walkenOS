@@ -41,13 +41,13 @@ std::string user()
         if(!f)
         {
             std::cout<<"File could not open1"<<std::endl;
-            return nullptr;
+            return NULL;
         }
         f1.open("User.txt",ios::in);
         if(!f1)
         {
             std::cout<<"File could not open"<<std::endl;
-            return nullptr;
+            return NULL;
         }
         else
         {
