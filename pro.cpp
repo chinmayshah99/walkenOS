@@ -23,7 +23,7 @@ int mainmenu()
 	while (1) {
 		abc:
 		int c;
-
+		system("clear");
 		std::cout<<std::string(10,'\n')<<std::string(12, '\t')<<"Menu\n\n"<<std::string(10,'\t');
 		std::cout<<"Press the number to enter the program"<<std::string(4,'\n');
 		std::cout << std::string(11,'\t');
@@ -36,7 +36,7 @@ int mainmenu()
 		std::cout << std::string(11,'\t');
 		std::cout<<"4.Logout\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"5.System Moniter\n";
+		std::cout<<"5.System Monitor\n";
 		std::cout << std::string(11,'\t');
 		std::cout<<"6.Power Off\n";
 		std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Input:";
@@ -101,13 +101,13 @@ void submenu()
 		std::cout<<"Press the number to enter the option"<<std::string(4,'\n');
 		std::cout << std::string(11,'\t');
 
-		std::cout<<"1.Process\n";
+		std::cout<<"1.Process Status\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"2.Memory\n";
+		std::cout<<"2.Memory Status\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"3.I/O\n";
+		std::cout<<"3.I/O Status\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"4.Back\n";
+		std::cout<<"4.Exit to Main Menu\n";
 		std::cout << std::string(11,'\t');
 		std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Input:";
 
@@ -130,15 +130,19 @@ void submenu()
 		switch(c)
 		{
 			case 1:
+			
 			break;
+			
 			case 2:
-	        std::cout<<"Option 2"<<std::endl;
+	        system("free -m");
 			break;
+			
 			case 3:
 			break;
+			
 			case 4:
-			    system("clear");
-			    mainmenu();
+			system("clear");
+			mainmenu();
 			break;
 
 			default:

@@ -31,6 +31,20 @@
         "xmemory0": "cpp",
         "xstddef": "cpp",
         "xstring": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "chrono": "cpp",
+        "clocale": "cpp",
+        "ctime": "cpp",
+        "cwctype": "cpp",
+        "fstream": "cpp",
+        "memory": "cpp",
+        "ratio": "cpp",
+        "string_view": "cpp",
+        "thread": "cpp",
+        "tuple": "cpp",
+        "algorithm": "cpp"
     }
 }
