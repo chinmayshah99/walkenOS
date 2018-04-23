@@ -285,4 +285,3 @@ void file_manager()
             shell_interpreter(user_input);
     }
 }
-
