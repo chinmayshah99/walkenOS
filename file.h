@@ -33,4 +33,8 @@ void copy_file(string file_name, string destination_file_name);
 // shell interpreter 
 void shell_interpreter(string input);
 
+// file manager for main integration
+void file_manager()
+
 #endif
+
