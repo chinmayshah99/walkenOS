@@ -16,10 +16,14 @@ power off
 #include <chrono>
 #include <thread>
 
-void submenu();
+void submenu(int procno[],std::string proc[]);
 
 int mainmenu()
 {
+
+
+    std::string proc[]={"File manager","Audio Player","Calculator","System Monitor","Text Editor"};
+    int procno[]={0,0,0,0,0};
 	while (1) {
 		abc:
 		int c;
@@ -28,17 +32,19 @@ int mainmenu()
 		std::cout<<"Press the number to enter the program"<<std::string(4,'\n');
 		std::cout << std::string(11,'\t');
 
-		std::cout<<"1.File Manager\n";
+		std::cout<<"1. File Manager\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"2.Audio Player\n";
+		std::cout<<"2. Audio Player\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"3.Calculator\n";
+		std::cout<<"3. Calculator\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"4.Logout\n";
+		std::cout<<"4. Logout\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"5.System Moniter\n";
+		std::cout<<"5. System Moniter\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"6.Power Off\n";
+		std::cout<<"6. Text Editor\n";
+		std::cout << std::string(11,'\t');
+		std::cout<<"7. Power Off\n";
 		std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Input:";
 
 		while(true) {
@@ -60,38 +66,44 @@ int mainmenu()
 		switch(c)
 		{
 			case 1:
+			    procno[0]=1;
 			break;
 			case 2:
-			system("cmus");
-			system("clear");
+			    procno[1]=1;
+                system("cmus");
+                system("clear");
 			break;
 			case 3:
-			system("clear");
-			system("gcalccmd");
-			system("clear");
+			    procno[2]=1;
+                system("clear");
+                system("gcalccmd");
+                system("clear");
 			break;
 			case 4:
-			system("clear");
+                system("clear");
 			break;
 			case 5:
-
-			system("clear");
-			submenu();
+                procno[3]=1;
+                system("clear");
+                submenu(procno,proc);
 
 			break;
 			case 6:
-			system("exit");
+			         procno[4]=1;
+			break;
+			case 7:
+                system("exit");
 			return 0;
 			break;
 			default:
-			  goto pqr;
+                goto pqr;
 			break;
 		}
 	}
 }
 
 
-void submenu()
+void submenu(int procno[],std::string proc[])
 {
   while (1) {
 		abc:
@@ -101,15 +113,16 @@ void submenu()
 		std::cout<<"Press the number to enter the option"<<std::string(4,'\n');
 		std::cout << std::string(11,'\t');
 
-		std::cout<<"1.Process\n";
+		std::cout<<"1. Process\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"2.Memory\n";
+		std::cout<<"2. Memory\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"3.I/O\n";
+		std::cout<<"3. I/O\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"4.Back\n";
+		std::cout<<"4. Back\n";
 		std::cout << std::string(11,'\t');
 		std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Input:";
+
 
 		while(true) {
 			std::cin >>c;
@@ -126,13 +139,49 @@ void submenu()
 			}
 			else break;
 		}
-
+    int num;
 		switch(c)
 		{
 			case 1:
-			break;
+			    xyz:
+			    system("clear");
+			    std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Running Process";
+			     num=0;
+			     for(int i=0;i<5;i++)
+			     {
+			       if(procno[i]==1)
+			       {
+			         std::cout << std::string(2,'\n')<<std::string(11,'\t')<<++num<<". "<<proc[i];
+			       }
+			     }
+			     std::cout<<std::string(10,'\n')<<std::string(10, '\t')<<"Press 0 to go back \n\n";
+    		   std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Input:";
+    		  while(true) {
+    			std::cin >>c;
+    			std::cin.ignore(32767, '\n');
+    			if(std::cin.fail()) {
+    				std::cin.clear();
+    				std::cin.ignore(32767, '\n');
+    				lmn:
+    				std::cout << "\n\n" << std::string(10,'\t') <<"Not a valid input! Re-enter key";
+    				std::cout << std::endl;
+    				std::this_thread::sleep_for (std::chrono::seconds(1));
+    				system("clear");
+    				goto xyz;
+
+    			}
+    			else break;
+    		}
+    		if(c==0)
+    		{
+    		  break;
+    		}
+    		else{
+    		  goto lmn;
+    		}
+
 			case 2:
-	        std::cout<<"Option 2"<<std::endl;
+          std::cout<<"Option 2"<<std::endl;
 			break;
 			case 3:
 			break;
@@ -142,7 +191,7 @@ void submenu()
 			break;
 
 			default:
-			  goto pqr;
+                goto pqr;
 			break;
 		}
 	}
