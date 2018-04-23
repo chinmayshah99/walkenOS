@@ -273,3 +273,11 @@ void shell_interpreter(string input)
 		system(string_char(input));
 	}	
 }
+
+int main()
+{ 	
+	std::string command = "display";
+	shell_interpreter(command);
+
+	return 0;
+}
