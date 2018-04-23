@@ -267,9 +267,21 @@ void shell_interpreter(string input)
 	else if(command_name.compare("open") == 0 )
 	{
 		open_file(v[1]);
-	}
+    }
 	else
 	{
 		system(string_char(input));
 	}	
+}
+
+void file_manager()
+{
+    while(true){
+        string user_input;
+        getline(cin,user_input);
+        if(user_input.compare("exitsi") == 0)
+            return;
+        else
+            shell_interpreter(user_input);
+    }
 }
