@@ -22,7 +22,7 @@ int mainmenu()
 {		
 	while (1) {
 		abc:
-		int c; // TODO, NEEDS VISIT as line 42 re-defines 'c'
+		int c;
 
 		std::cout<<std::string(10,'\n')<<std::string(12, '\t')<<"Menu\n\n"<<std::string(10,'\t');
 		std::cout<<"Press the number to enter the program"<<std::string(4,'\n');

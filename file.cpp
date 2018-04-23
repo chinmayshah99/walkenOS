@@ -9,7 +9,7 @@
 
 using namespace std;
 
-// check whether the given file exits
+// check whether the given file exists
 // if the file exists then returns true
 // else in all cases returns false
 bool if_file_exists(string file_name)
@@ -36,7 +36,7 @@ char* string_char(string command)
 	return writable;
 }
 
-
+// opens the file in vim
 // checks whether the file already exists
 // if it exists then opens it in vim
 // else exits
