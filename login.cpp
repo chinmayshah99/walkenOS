@@ -1,36 +1,53 @@
 #include<stdio.h>
-#include<conio.h>
 #include<fstream>
 #include<iostream>
 using namespace std;
 
-void user()
+
+int getInt() 
+{
+    while(true) {
+        int input;
+        std::cin >> input;
+        std::cin.ignore(32767, '\n');
+        if(std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(32767, '\n');
+            std::cout << "Input not an integer! Re-enter key: ";
+            std::cout << std::endl;
+        }
+        else 
+            return input;
+    }
+}
+
+std::string user()
 {
     fstream f,f1,f2;
     int ch;
-    string user,pass;
-    cout<<"Enter 1.Set Up New Account, 2.Login"<<endl;
-    cin>>ch;
+    std::string user,pass;
+    std::cout<<"Enter 1.Set Up New Account, 2.Login"<<std::endl;
+    ch = getInt();
     if(ch==1)
     {
         set:
-        string u;
+        std::string u;
         int j=0;
-        cout<<endl<<"Set Up : "<<endl<<endl<<"Enter your User name"<<endl;
+        std::cout<<std::endl<<"Set Up : "<<std::endl<<std::endl<<"Enter your User name"<<std::endl;
         cin>>user;
-        cout<<"Enter your password"<<endl;
+        std::cout<<"Enter your password"<<std::endl;
         cin>>pass;
         f.open("User.txt",ios::app);
         if(!f)
         {
-            cout<<"File could not open"<<endl;
-            return;
+            std::cout<<"File could not open1"<<std::endl;
+            return nullptr;
         }
         f1.open("User.txt",ios::in);
         if(!f1)
         {
-            cout<<"File could not open"<<endl;
-            return;
+            std::cout<<"File could not open"<<std::endl;
+            return nullptr;
         }
         else
         {
@@ -42,7 +59,7 @@ void user()
                 {
                     if(u==user)
                     {
-                        cout<<"User name Already exists. Enter another User name."<<endl;
+                        std::cout<<"User name Already exists. Enter another User name."<<std::endl;
                         f1.close();
                         f.close();
                         goto set;
@@ -50,26 +67,26 @@ void user()
                 }
             }
             f1.close();
-            f<<user<<endl<<pass<<endl<<endl;
-            cout<<"Set up completed."<<endl;
+            f<<user<<std::endl<<pass<<std::endl<<std::endl;
+            std::cout<<"Set up completed."<<std::endl;
+            f.close();
             goto log;
         }
-        f.close();
     }
     else if(ch==2)
     {
         log:
-        string u,p;
+        std::string u,p;
         int i=0,flag=0;
-        cout<<endl<<"Log In : "<<endl<<endl<<"Enter Your User name"<<endl;
+        std::cout<<std::endl<<"Log In : "<<std::endl<<std::endl<<"Enter Your User name"<<std::endl;
         cin>>user;
-        cout<<"Enter your password"<<endl;
+        std::cout<<"Enter your password"<<std::endl;
         cin>>pass;
         f2.open("User.txt",ios::in);
         if(!f2)
         {
-            cout<<"File could not open"<<endl;
-            return;
+            std::cout<<"File could not open"<<std::endl;
+            return nullptr;
         }
         while(!f2.eof())
         {
@@ -84,11 +101,12 @@ void user()
                     i++;
                     if(p==pass)
                     {
-                        cout<<"Login Successful!!"<<endl<<"Your User name : "<<user<<endl;
+                        std::cout<<"Login Successful!!"<<std::endl<<"Your User name : "<<user<<std::endl;
+                        return user;
                     }
                     else
                     {
-                        cout<<"Wrong Password!"<<endl<<"Enter your information again"<<endl;
+                        std::cout<<"Wrong Password!"<<std::endl<<""<<"Enter your information again"<<std::endl;
                         f2.close();
                         goto log;
                     }
@@ -98,12 +116,22 @@ void user()
         }
         if(flag==0)
         {
-            cout<<"User name not found"<<endl;
-            f2.close();
-            goto log;
+            std::cout<<"User name not found"<<std::endl;
+            while(1) {
+                std::cout<<"\nMenu:\n1.Set up a new account \n2.Login with another user name\n"<<std::endl;
+                int c;
+                c = getInt();
+                f2.close();
+                if(c==1)
+                    goto set;
+                else if(c==2)
+                    goto log;
+                else 
+                    cout<<"Wrong Input"<<std::endl;
+                }
         }
         f2.close();
-        return;
+        return user;
     }
 }
 int main()
