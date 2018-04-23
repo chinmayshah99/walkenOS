@@ -1,11 +1,14 @@
 // validates whehter file exists and then deletes it
 
 #include <iostream>
-#include <cstring>
+#include <string>
 #include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdio>
+#include <vector>
+#include <algorithm>
+#include "file.h"
 
 using namespace std;
 
@@ -71,7 +74,7 @@ void rename_file(string old_file_name, string new_file_name)
 			return;
 		}
 		
-	result= rename( string_char(old_file_name) ,string_char(new_file_name));
+	int result= rename( string_char(old_file_name) ,string_char(new_file_name));
 	if ( result == 0 )
     	cout<<"File successfully renamed"<<endl;
   	else
@@ -88,23 +91,43 @@ void create_folder(string folder_name)
 	system(string_char(command));
 }
 
+// creates a new file in the current working directory and opens it
+void create_file(string file_name)
+{
+	bool check_new_exists = if_file_exists(file_name);
+	if(check_new_exists == true)
+		{
+			cout<<"this file alredy exists, try some other file name"<<endl;
+			return;
+		}
+	else{	
+		string command = "touch " + file_name;
+		system(string_char(command));
+		open_file(file_name);
+	}
+}
+
 // dispay the list of files and folderes
 void dispay()
 {
-	system("ls -a -ls")
+	system("ls -a -ls");
 }
 
 // deletes the file
 // checks whether the file exists
 // if it exists then deletes it
 // else shows an error message and exits the functions
-void delete_file(string file_name)
+void delete_file(std::string file_name)
 {
 	bool check = if_file_exists(file_name);
 	if(check == true)
 	{
-		if( remove(string_char(file_name))== 0);
-			cout<<" "<<file_name<<" file deleted successfully"<<endl;
+		if( remove(string_char(file_name))== 0)
+		{
+			cout<<" ";
+			std::cout << file_name;
+			cout<<" file deleted successfully"<<endl;
+		}
 		else
 			cout<<"couldn't delete file :("<<endl;
 	}
@@ -165,14 +188,88 @@ void copy_file(string file_name, string destination_file_name)
 			c = fgetc(outptr);
 		}
 	
-		cout<<"\nContents copied to"<<destination_file_name;
+		cout<<"\nContents copied to";
+		std::cout<< destination_file_name<<endl;
 		// closes the  file
 		fclose(inptr);
 		fclose(outptr);
 	}
 }
 
+// splits the i/p string according to the ch specified and stores it in vector strs
+size_t split(const std::string &txt, std::vector<std::string> &strs, char ch)
+{
+    size_t pos = txt.find( ch );
+    size_t initialPos = 0;
+    strs.clear();
+
+    // Decompose statement
+    while( pos != std::string::npos ) {
+        strs.push_back( txt.substr( initialPos, pos - initialPos ) );
+        initialPos = pos + 1;
+
+        pos = txt.find( ch, initialPos );
+    }
+
+    // Add the last one
+    strs.push_back( txt.substr( initialPos, std::min( pos, txt.size() ) - initialPos + 1 ) );
+
+    return strs.size();
+}
+
 void shell_interpreter(string input)
 {
-	if(input[0] )
+	// splits the commands and stores it in vector
+	std::vector<std::string> v;
+    split(input, v, ' ' );
+
+	string command_name = v[0];
+	// copy command
+	if(command_name.compare("copy") == 0 )
+	{
+		string dest_file = v[2];
+		if(dest_file.empty())
+		{
+			copy_file(v[1], "Copy of " + v[1]);
+		}
+		else
+			copy_file(v[1], v[2]);
+	}
+	// delete command
+	else if(command_name.compare("delete") == 0 )
+	{
+		delete_file(v[1]);
+	}
+	// display command
+	else if(command_name.compare("display") == 0 )
+	{
+		dispay();
+	}
+	else if(command_name.compare("cfolder") == 0 )
+	{
+		create_folder(v[1]);
+	}
+	else if(command_name.compare("cfile") == 0 )
+	{
+		create_file(v[1]);
+	}
+	else if(command_name.compare("rename") == 0 )
+	{
+		string dest_file = v[2];
+		if(dest_file.empty() || v[1].empty())
+		{
+			cout<<"provide name of the file"<<endl;
+		}
+		else{
+			rename_file(v[1], v[2]);
+		}
+	}
+	else if(command_name.compare("open") == 0 )
+	{
+		open_file(v[1]);
+	}
+	else
+	{
+		system(string_char(input));
+	}	
 }
