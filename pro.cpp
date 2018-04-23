@@ -16,10 +16,10 @@ power off
 #include <chrono>
 #include <thread>
 
-
+void submenu();
 
 int mainmenu()
-{		
+{
 	while (1) {
 		abc:
 		int c;
@@ -36,9 +36,11 @@ int mainmenu()
 		std::cout << std::string(11,'\t');
 		std::cout<<"4.Logout\n";
 		std::cout << std::string(11,'\t');
-		std::cout<<"5.Power Off\n";
+		std::cout<<"5.System Moniter\n";
+		std::cout << std::string(11,'\t');
+		std::cout<<"6.Power Off\n";
 		std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Input:";
-		
+
 		while(true) {
 			std::cin >>c;
 			std::cin.ignore(32767, '\n');
@@ -46,7 +48,7 @@ int mainmenu()
 				std::cin.clear();
 				std::cin.ignore(32767, '\n');
 				pqr:
-				std::cout << "\n\n" << std::string(10,'\t') <<"Input not an integer! Re-enter key";
+				std::cout << "\n\n" << std::string(10,'\t') <<"Not a valid input! Re-enter key";
 				std::cout << std::endl;
 				std::this_thread::sleep_for (std::chrono::seconds(1));
 				system("clear");
@@ -72,18 +74,87 @@ int mainmenu()
 			system("clear");
 			break;
 			case 5:
+
+			system("clear");
+			submenu();
+
+			break;
+			case 6:
 			system("exit");
 			return 0;
 			break;
 			default:
+			  goto pqr;
 			break;
 		}
 	}
 }
 
- int main()
- {
+
+void submenu()
+{
+  while (1) {
+		abc:
+		int c;
+
+		std::cout<<std::string(10,'\n')<<std::string(12, '\t')<<"System Monitor\n\n"<<std::string(10,'\t');
+		std::cout<<"Press the number to enter the option"<<std::string(4,'\n');
+		std::cout << std::string(11,'\t');
+
+		std::cout<<"1.Process\n";
+		std::cout << std::string(11,'\t');
+		std::cout<<"2.Memory\n";
+		std::cout << std::string(11,'\t');
+		std::cout<<"3.I/O\n";
+		std::cout << std::string(11,'\t');
+		std::cout<<"4.Back\n";
+		std::cout << std::string(11,'\t');
+		std::cout << std::string(2,'\n')<<std::string(11,'\t')<<"Input:";
+
+		while(true) {
+			std::cin >>c;
+			std::cin.ignore(32767, '\n');
+			if(std::cin.fail()) {
+				std::cin.clear();
+				std::cin.ignore(32767, '\n');
+				pqr:
+				std::cout << "\n\n" << std::string(10,'\t') <<"Not a valid input! Re-enter key";
+				std::cout << std::endl;
+				std::this_thread::sleep_for (std::chrono::seconds(1));
+				system("clear");
+				goto abc;
+			}
+			else break;
+		}
+
+		switch(c)
+		{
+			case 1:
+			break;
+			case 2:
+	        std::cout<<"Option 2"<<std::endl;
+			break;
+			case 3:
+			break;
+			case 4:
+			    system("clear");
+			    mainmenu();
+			break;
+
+			default:
+			  goto pqr;
+			break;
+		}
+	}
+
+
+
+}
+
+
+int main()
+{
 
  	mainmenu();
  	return 0;
- }
+}
