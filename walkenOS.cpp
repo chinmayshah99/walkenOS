@@ -1,6 +1,3 @@
-//uncomment startup
-//hello user change back to 4s
-
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -101,6 +98,7 @@ void startup() {
 void user()
 {   
     system("clear");
+    xyz:
     std::cout << std::string(16,'\n');
     std::cout << std::string(11,'\t'); //full
     fstream f,f1,f2;
@@ -264,6 +262,13 @@ void user()
         system("clear");
         system("exit");
         return;
+    }else{
+      	    std::cout << "\n\n" << std::string(10,'\t') <<"Not a valid input! Re-enter key";
+    				std::cout << std::endl;
+    				std::this_thread::sleep_for (std::chrono::seconds(1));
+    				system("clear");
+    				goto xyz;
+      
     }
 }
 
