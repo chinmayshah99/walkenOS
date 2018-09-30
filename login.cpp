@@ -3,27 +3,12 @@
 #include<iostream>
 #include <chrono>
 #include <thread>
+
+#include "validation.h"
+
 using namespace std;
 
 
-int getInt() 
-{
-    while(true) {
-        int input;
-        std::cin >> input;
-        std::cin.ignore(32767, '\n');
-        if(std::cin.fail()) {
-            std::cin.clear();
-            std::cout << std::string(11,'\t'); //full
-            std::cin.ignore(32767, '\n');
-            std::cout << "Input not an integer! Re-enter key: ";
-            std::cout << std::endl;
-            std::cout << std::string(11,'\t');
-        }
-        else 
-            return input;
-    }
-}
 
 std::string user()
 {   
@@ -180,9 +165,4 @@ std::string user()
         f2.close();
         return user;
     }
-}
-int main()
-{
-    user();
-    return 0;
 }

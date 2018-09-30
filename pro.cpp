@@ -17,7 +17,6 @@ power off
 #include <chrono>
 #include <thread>
 
-void submenu(int procno[],std::string proc[]);
 
 int mainmenu()
 {
@@ -196,12 +195,4 @@ void submenu(int procno[],std::string proc[])
 		}
 	}
 
-}
-
-
-int main()
-{
-
- 	mainmenu();
- 	return 0;
 }
