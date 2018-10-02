@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/testStudent.dir/src/file.cpp.o CMakeFiles/testStudent.dir/src/login.cpp.o CMakeFiles/testStudent.dir/src/pro.cpp.o CMakeFiles/testStudent.dir/src/validation.cpp.o CMakeFiles/testStudent.dir/src/walkenOS.cpp.o  -o testStudent 

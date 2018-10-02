@@ -15,6 +15,9 @@ int main() {
     startup();
     
     user();
+
+    int selction = mainmenu();
+
     
     return 0;
 }

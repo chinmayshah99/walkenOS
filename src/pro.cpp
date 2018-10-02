@@ -18,6 +18,8 @@ power off
 #include <thread>
 
 
+void submenu(int procno[],std::string proc[]);
+
 int mainmenu()
 {
     std::string proc[]={"File manager","Audio Player","Calculator","System Monitor","Text Editor"};
