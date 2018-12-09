@@ -17,6 +17,8 @@ before_install:
     - eval "${MATRIX_EVAL}"
 
 script:
+  - mkdir build
+  - cd build
   - cmake .
   - cmake -- build .
   
