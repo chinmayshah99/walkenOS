@@ -1,9 +1,17 @@
 # walkenOS
 Simulation of running OS
 
-### Compiling Instruction:
+### Build Instruction:
 Usage: 
-```mkdir build```
-```cd build```
-```cmake ..```
-```make```
+
+```
+mkdir build
+cd build
+cmake ..
+make
+```
+
+### Run Instruction
+```
+./os
+```
