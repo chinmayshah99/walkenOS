@@ -2,4 +2,8 @@
 Simulation of running OS
 
 ### Compiling Instruction:
-Usage: ```g++ filename.cpp -std=c++11```
+Usage: 
+```mkdir build```
+```cd build```
+```cmake ..```
+```make```

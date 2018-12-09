@@ -7,6 +7,6 @@ include_directories(include)
 
  
 #However, the file(GLOB...) allows for wildcard additions:
-file(GLOB SOURCES0 "src/*.cpp")
+file(GLOB SOURCES "src/*.cpp")
  
 add_executable(testStudent ${SOURCES})
