@@ -34,5 +34,5 @@
 # vscode files
 *.json
 
-# build folder
+# build directory
 /build/*
